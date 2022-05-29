@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+option java_package = "ru.net.arh.study.bh.service";
+
+import "google/protobuf/empty.proto";
+import "bh.dto.proto";
+
+service WordCollectionService {
+  rpc create( CreateWordCollectionRq ) returns ( IdResponse ) {}
+  rpc getAll( GetAllCollectionRq ) returns ( stream WordCollection ) {}
+  rpc getById( GetCollectionRq ) returns ( NullableWordCollection ) {}
+  rpc edit( RenameWordCollectionRq ) returns ( google.protobuf.Empty  ) {}
+  rpc delete( DeleteWordCollectionRq ) returns ( google.protobuf.Empty ) {}
+}
+
+service WordService {
+  rpc create( CreateWordRq ) returns ( IdResponse ) {}
+  rpc getAll( GetAllWordRq ) returns ( stream Word ) {}
+  rpc getById( GetWordRq ) returns ( NullableWord ) {}
+  rpc edit( EditWordRq ) returns ( google.protobuf.Empty ) {}
+  rpc delete( DeleteWordRq ) returns ( google.protobuf.Empty ) {}
+}
+
+service ExampleService {
+  rpc create( CreateExampleRq ) returns ( IdResponse ) {}
+  rpc getAll( GetAllExamplesRq ) returns ( stream Example ) {}
+  rpc getById( GetExampleRq ) returns ( NullableExample ) {}
+  rpc edit( EditExampleRq ) returns ( google.protobuf.Empty ) {}
+  rpc delete( DeleteExampleRq ) returns ( google.protobuf.Empty ) {}
+}
+
+service QuestService {
+  rpc getNew( QuestNewWordRq ) returns ( IdResponse ) {}
+  rpc saveQuestResult( SaveQuestResultRq ) returns ( google.protobuf.Empty ) {}
+}

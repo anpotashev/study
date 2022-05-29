@@ -1,0 +1,11 @@
+grpc:
+  client:
+    study-bh:
+      address: ${BH_ADDRESS}
+      negotiationType: PLAINTEXT
+    study-tg:
+      address: ${TG_ADDRESS}
+      negotiationType: PLAINTEXT
+
+server:
+  port: ${HTTP_PORT:8080}

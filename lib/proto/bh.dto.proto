@@ -1,0 +1,162 @@
+syntax = "proto3";
+
+option java_package = "ru.net.arh.study.bh.dto";
+
+import "google/protobuf/struct.proto";
+
+//common
+message IdResponse {
+  fixed64 id = 1;
+}
+
+
+// WordCollection
+// response
+
+message WordCollection {
+  fixed64 id = 1;
+  string name = 2;
+}
+
+message NullableWordCollection {
+  oneof data {
+    google.protobuf.NullValue null = 1;
+    WordCollection wordCollection = 2;
+  }
+}
+
+// request
+
+message GetAllCollectionRq {
+  fixed64 userId = 1;
+}
+
+message GetCollectionRq {
+  fixed64 userId = 1;
+  fixed64 collectionId = 2;
+}
+
+message CreateWordCollectionRq {
+  fixed64 userId = 1;
+  string name = 2;
+}
+
+message RenameWordCollectionRq {
+  fixed64 userId = 1;
+  fixed64 wordCollectionId = 2;
+  string newName = 3;
+}
+
+message DeleteWordCollectionRq {
+  fixed64 userId = 1;
+  fixed64 wordCollectionId = 2;
+}
+
+// Word
+// responses
+
+message Word {
+  fixed64 id = 1;
+  string original = 2;
+  string translated = 3;
+  optional string soundUrl = 4;
+  fixed32 successAnswer = 5;
+  fixed32 errorAnswer = 6;
+}
+
+message NullableWord {
+  oneof data {
+    google.protobuf.NullValue null = 1;
+    Word word = 2;
+  }
+}
+
+
+
+// requests
+
+message GetAllWordRq {
+  fixed64 userId = 1;
+  fixed64 collectionId = 2;
+}
+
+message GetWordRq {
+  fixed64 userId = 1;
+  fixed64 wordId = 2;
+}
+
+message CreateWordRq {
+  fixed64 userId = 1;
+  fixed64 collectionId = 2;
+  string original = 3;
+  string translated = 4;
+  optional string soundUrl = 5;
+}
+
+message EditWordRq {
+  fixed64 userId = 1;
+  fixed64 wordId = 2;
+  string original = 3;
+  string translated = 4;
+  optional string soundUrl = 5;
+}
+
+message DeleteWordRq {
+  fixed64 userId = 1;
+  fixed64 wordId = 2;
+}
+
+// Examples
+// responses
+message Example {
+  fixed64 id = 1;
+  string exampleText = 2;
+}
+
+message NullableExample {
+  oneof data {
+    google.protobuf.NullValue null = 1;
+    Example example = 2;
+  }
+}
+
+
+// requests
+message GetAllExamplesRq {
+  fixed64 userId = 1;
+  fixed64 wordId = 2;
+}
+message GetExampleRq {
+  fixed64 userId = 1;
+  fixed64 exampleId = 2;
+}
+
+message CreateExampleRq {
+  fixed64 userId = 1;
+  fixed64 wordId = 2;
+  string exampleText = 3;
+}
+
+message EditExampleRq {
+  fixed64 userId = 1;
+  fixed64 exampleId = 2;
+  string exampleText = 3;
+}
+
+message DeleteExampleRq {
+  fixed64 userId = 1;
+  fixed64 exampleId = 2;
+}
+
+// Quest
+// Requests
+message QuestNewWordRq {
+  fixed64 userId = 1;
+  fixed64 collectionId = 2;
+}
+
+message SaveQuestResultRq {
+  fixed64 userId = 1;
+  fixed64 wordId = 2;
+  bool success = 3;
+}

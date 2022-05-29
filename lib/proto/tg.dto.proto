@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+option java_package = "ru.net.arh.study.tg.dto";
+
+import "google/protobuf/struct.proto";
+
+message TelegramStartAuthRs {
+    string code = 1;
+    string url = 2;
+}
+
+message TelegramFinishAuthRq {
+    string code = 1;
+    string singleTimeCode = 2;
+}
+
+message TelegramFinishAuthRs {
+    oneof data {
+        google.protobuf.NullValue null = 1;
+        fixed64 chatId = 2;
+    }
+}
+

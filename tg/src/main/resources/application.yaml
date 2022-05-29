@@ -1,0 +1,21 @@
+telegram:
+  botName: ${BOT_NAME}
+  token: ${BOT_TOKEN}
+
+grpc:
+  server:
+    port:  ${GRPC_PORT:6565}
+    negotiationType: PLAINTEXT
+
+spring:
+  datasource:
+    url: ${JDBC_URL}
+    driverClassName: org.postgresql.Driver
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+  sql:
+    init:
+      platform: pg
+      mode: always
+server:
+  port: ${HTTP_PORT:8080}

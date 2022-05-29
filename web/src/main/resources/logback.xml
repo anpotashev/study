@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <appender name="BH-LOG"
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${catalina.base:-.}/logs/web.log</file>
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%X{uuid}]  [%thread] %-5level %logger - %msg%n
+            </pattern>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${catalina.base:-.}/logs/web.%d{yyyy-MM-dd}.log
+            </fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+    </appender>
+
+    <root level="info">
+        <appender-ref ref="BH-LOG"/>
+    </root>
+    <logger name="ru.net.arh.study" level="info"/>
+
+    <logger name="org.springframework.security.web.csrf" level="DEBUG" />
+
+    <appender name="STDOUT"
+              class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%X{uuid}]  [%thread] %-5level %logger - %msg%n</pattern>
+        </encoder>
+    </appender>
+</configuration>

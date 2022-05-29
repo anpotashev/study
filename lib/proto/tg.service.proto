@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option java_package = "ru.net.arh.study.tg.service";
+
+import "google/protobuf/empty.proto";
+import "tg.dto.proto";
+
+
+service TelegramAuthService {
+    rpc startAuth( google.protobuf.Empty ) returns ( TelegramStartAuthRs ) {}
+    rpc finishAuth( TelegramFinishAuthRq ) returns ( TelegramFinishAuthRs ) {}
+}
